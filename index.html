@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Olimpíadas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <h1>Gerenciador de Olimpíadas</h1>
+    <div class="container">
+        <form id="olympicsForm">
+            <label for="year">Ano das Olimpíadas:</label>
+            <select id="year">
+                <option value="1970">1970</option>
+                <!-- Adicionar outros anos -->
+                <option value="2024">2024</option>
+            </select>
+            <br>
+            <label for="country">País das Olimpíadas:</label>
+            <select id="country">
+                <option value="Brasil">Brasil</option>
+                <!-- Adicionar outros países -->
+            </select>
+            <br>
+            <label for="sport">Modalidade Olímpica:</label>
+            <select id="sport">
+                <option value="Atletismo">Atletismo</option>
+                <!-- Adicionar outras modalidades -->
+            </select>
+            <br>
+            <label for="athlete">Nome do Atleta:</label>
+            <input type="text" id="athlete" required>
+            <br>
+            <label for="medal">Medalha:</label>
+            <select id="medal">
+                <option value="Ouro">Ouro</option>
+                <option value="Prata">Prata</option>
+                <option value="Bronze">Bronze</option>
+            </select>
+            <br>
+            <label for="medalCount">Quantidade de Medalhas:</label>
+            <input type="number" id="medalCount" required>
+            <br>
+            <button type="submit">Adicionar</button>
+        </form>
+        <ul id="olympicsList"></ul>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('Service Worker registrado com sucesso:', registration);
+                })
+                .catch(error => {
+                    console.log('Falha ao registrar o Service Worker:', error);
+                });
+        }
+    </script>
+</body>
+</html>
