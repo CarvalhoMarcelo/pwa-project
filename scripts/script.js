@@ -13,6 +13,8 @@ window.addEventListener('load', async () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('olympicsForm');    
+    let isEditing = false; // Variável para verificar se estamos no modo de edição
+    let currentEditId = null; // Armazena o ID do item que está sendo editado
 
     // Abrir ou criar a base de dados
     const dbPromise = new Promise((resolve, reject) => {
@@ -107,8 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td data-label="Nome do Atleta">${olympic.athlete}</td>
                 <td data-label="Medalha">${olympic.medal}</td>
                 <td data-label="Quantidade de Medalhas">${olympic.medalCount}</td>
-                <td data-label="Ações" class="action-buttons">
-                    <button onclick="editOlympic(${olympic.id})">Editar</button>
+                <td data-label="Ações" class="action-buttons">                    
+                    <button onclick="editOlympic(${olympic.id}, '${olympic.year}', '${olympic.country}', '${olympic.sport}', '${olympic.athlete}', '${olympic.medal}', ${olympic.medalCount})">Editar</button>
                     <button onclick="deleteOlympic(${olympic.id})">Excluir</button>
                 </td>
             `;
@@ -126,7 +128,15 @@ document.addEventListener('DOMContentLoaded', () => {
             medal: document.getElementById('medal').value,
             medalCount: parseInt(document.getElementById('medalCount').value, 10)
         };
-        addOlympic(olympic); // Adicionar novo item
+
+        if (isEditing) {
+            updateOlympic(currentEditId, olympic); // Atualizar item
+            isEditing = false;
+            currentEditId = null;
+        } else {
+            addOlympic(olympic); // Adicionar novo item
+        }
+
         form.reset();
     });
 
@@ -139,20 +149,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('athlete').value = athlete;
         document.getElementById('medal').value = medal;
         document.getElementById('medalCount').value = medalCount;
-        form.onsubmit = (event) => {
-            event.preventDefault();
-            const updatedOlympic = {
-                year: document.getElementById('year').value,
-                country: document.getElementById('country').value,
-                sport: document.getElementById('sport').value,
-                athlete: document.getElementById('athlete').value,
-                medal: document.getElementById('medal').value,
-                medalCount: parseInt(document.getElementById('medalCount').value, 10)
-            };
-            updateOlympic(id, updatedOlympic); // Atualizar item
-            form.onsubmit = null;  // Resetar o submit do formulário para o padrão
-            form.reset();
-        };
+        
+        isEditing = true;
+        currentEditId = id;
     };
 
     renderOlympics(); // Renderizar a lista ao carregar a página
