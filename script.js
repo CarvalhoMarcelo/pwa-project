@@ -82,16 +82,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function renderOlympics() {
+        const olympicsList = document.getElementById('olympicsList');
+        olympicsList.innerHTML = ''; // Limpa a lista antes de renderizar novamente
+    
         const olympics = await getOlympics();
-        olympicsList.innerHTML = ''; // Limpar a lista antes de renderizar
-        olympics.forEach(({ id, year, country, sport, athlete, medal, medalCount }) => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <span>${year} - ${country} - ${sport} - ${athlete} - ${medal} - ${medalCount}</span>
-                <button onclick="deleteOlympic(${id})">Excluir</button>
-                <button onclick="editOlympic(${id}, '${year}', '${country}', '${sport}', '${athlete}', '${medal}', ${medalCount})">Editar</button>
+        olympics.forEach((olympic) => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td data-label="Ano">${olympic.year}</td>
+                <td data-label="País">${olympic.country}</td>
+                <td data-label="Modalidade">${olympic.sport}</td>
+                <td data-label="Nome do Atleta">${olympic.athlete}</td>
+                <td data-label="Medalha">${olympic.medal}</td>
+                <td data-label="Quantidade de Medalhas">${olympic.medalCount}</td>
+                <td data-label="Ações" class="action-buttons">
+                    <button onclick="editOlympic(${olympic.id})">Editar</button>
+                    <button onclick="deleteOlympic(${olympic.id})">Excluir</button>
+                </td>
             `;
-            olympicsList.appendChild(li);
+            olympicsList.appendChild(tr);
         });
     }
 

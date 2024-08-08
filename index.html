@@ -9,43 +9,70 @@
 </head>
 <body>
     <h1>Gerenciador de Olimpíadas</h1>
-    <div class="container">
-        <form id="olympicsForm">
-            <label for="year">Ano das Olimpíadas:</label>
-            <select id="year">
-                <option value="1970">1970</option>
-                <!-- Adicionar outros anos -->
-                <option value="2024">2024</option>
-            </select>
-            <br>
-            <label for="country">País das Olimpíadas:</label>
-            <select id="country">
-                <option value="Brasil">Brasil</option>
-                <!-- Adicionar outros países -->
-            </select>
-            <br>
-            <label for="sport">Modalidade Olímpica:</label>
+    <form id="olympicsForm">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="year">Ano:</label>
+                <select id="year">                        
+                    <option value="1970">1970</option>
+                    <option value="1974">1974</option>
+                    <!-- Adicionar outros anos -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="country">País:</label>
+                <select id="country">                        
+                    <option value="Brasil">Brasil</option>
+                    <option value="Estados Unidos">Estados Unidos</option>
+                    <!-- Adicionar outros países -->
+                </select>
+            </div>
+        </div>
+        <div class="form-group-1-line">
+            <label for="sport">Modalidade:</label>
             <select id="sport">
                 <option value="Atletismo">Atletismo</option>
+                <option value="Natação">Natação</option>
                 <!-- Adicionar outras modalidades -->
             </select>
-            <br>
+        </div>
+        <div class="form-group-1-line">
             <label for="athlete">Nome do Atleta:</label>
             <input type="text" id="athlete" required>
-            <br>
-            <label for="medal">Medalha:</label>
-            <select id="medal">
-                <option value="Ouro">Ouro</option>
-                <option value="Prata">Prata</option>
-                <option value="Bronze">Bronze</option>
-            </select>
-            <br>
-            <label for="medalCount">Quantidade de Medalhas:</label>
-            <input type="number" id="medalCount" required>
-            <br>
-            <button type="submit">Adicionar</button>
-        </form>
-        <ul id="olympicsList"></ul>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="medal">Medalha:</label>
+                <select id="medal">
+                    <option value="Ouro">Ouro</option>
+                    <option value="Prata">Prata</option>
+                    <option value="Bronze">Bronze</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="medalCount">Quantidade de Medalhas:</label>
+                <input type="number" id="medalCount" required>
+            </div>
+        </div>
+        <button type="submit">Adicionar</button>
+    </form>
+    
+    <div class="list-container">
+        <h2>Lista de Olimpíadas</h2>
+        <table id="olympicsTable">
+            <thead>
+                <tr>
+                    <th>Ano</th>
+                    <th>País</th>
+                    <th>Modalidade</th>
+                    <th>Nome do Atleta</th>
+                    <th>Medalha</th>
+                    <th>Quantidade de Medalhas</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="olympicsList"></tbody>
+        </table>
     </div>
     <script src="script.js"></script>
     <script>

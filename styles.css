@@ -3,12 +3,8 @@ body {
     margin: 20px;
 }
 
-.container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+form {
+    margin-bottom: 20px;
 }
 
 label {
@@ -16,15 +12,16 @@ label {
     margin: 10px 0 5px;
 }
 
-input, select {
+input, select, button {
+    display: block;
+    margin-bottom: 10px;
     width: 100%;
     padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 button {
+    width: auto;
     padding: 10px 15px;
     background-color: #007BFF;
     color: white;
@@ -37,23 +34,106 @@ button:hover {
     background-color: #0056b3;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+.list-container {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    margin-top: 20px;
+    overflow-x: auto; /* Adicionado para permitir rolagem horizontal */
 }
 
-li {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+.list-container h2 {
+    margin-top: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Adicionado para layout fixo */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    word-wrap: break-word; /* Adicionado para quebra de linha */
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.form-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
-li span {
+.form-group {
     flex: 1;
+    margin-right: 10px;
 }
 
-li button {
-    margin-left: 10px;
+.form-group-1-line {
+    flex: 1;
+    margin-right: 0px;
+}
+
+.form-group:last-child {
+    margin-right: 0;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.action-buttons button {
+    flex: 1;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group {
+        margin-right: 0;
+    }
+
+    th, td {
+        display: block;
+        width: 100%;
+    }
+
+    th {
+        text-align: right;
+    }
+
+    th::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+
+    td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+
+    tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+
+    .action-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
