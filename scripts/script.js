@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('olympicsForm');
-    const olympicsList = document.getElementById('olympicsList');
+    const form = document.getElementById('olympicsForm');    
 
     // Abrir ou criar a base de dados
     const dbPromise = new Promise((resolve, reject) => {
