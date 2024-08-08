@@ -1,3 +1,16 @@
+import { fetchAndStoreCountries, getCountriesFromDB } from './fetchCountries.js';
+
+window.addEventListener('load', async () => {
+    if (navigator.onLine) {
+        await fetchAndStoreCountries();
+    } else {
+        const countries = await getCountriesFromDB();
+        if (countries.length > 0) {
+            populateCountrySelect(countries);
+        }
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('olympicsForm');    
 

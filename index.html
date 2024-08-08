@@ -22,10 +22,8 @@
             </div>
             <div class="form-group">
                 <label for="country">País:</label>
-                <select id="country">                        
-                    <option value="Brasil">Brasil</option>
-                    <option value="Estados Unidos">Estados Unidos</option>
-                    <!-- Adicionar outros países -->
+                <select id="country" required>                        
+                    <!-- As opções serão adicionadas dinamicamente pelo JavaScript -->
                 </select>
             </div>
         </div>
@@ -75,7 +73,7 @@
             <tbody id="olympicsList"></tbody>
         </table>
     </div>
-    <script src="scripts/script.js"></script>
+    <script type="module" src="scripts/script.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')
