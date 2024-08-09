@@ -4,7 +4,7 @@ const COUNTRIES_API_URL = 'https://countriesnow.space/api/v0.1/countries'; // AP
 // Abrir ou criar um banco de dados IndexedDB
 function openDB() {
     return new Promise((resolve, reject) => {
-        const request = indexedDB.open('olympicsDB', 1);
+        const request = indexedDB.open('countries-db', 1);
 
         request.onupgradeneeded = (event) => {
             const db = event.target.result;
@@ -27,7 +27,7 @@ function openDB() {
 async function fetchFromRestCountries() {
     const response = await fetch(REST_COUNTRIES_URL);
     if (!response.ok) {
-        throw new Error('Erro ao buscar países da Restcountries');
+        throw new Error('Error fetching countries from Restcountries');
     }
     return response.json();
 }
@@ -36,7 +36,7 @@ async function fetchFromRestCountries() {
 async function fetchFromCountriesAPI() {
     const response = await fetch(COUNTRIES_API_URL);
     if (!response.ok) {
-        throw new Error('Erro ao buscar países da Countries API');
+        throw new Error('Error fetching countries from  Countries API');
     }
     return response.json();
 }
@@ -80,7 +80,7 @@ async function getCountriesFromDB() {
 // Preencher o campo de seleção de países
 function populateCountrySelect(countries) {
     const countrySelect = document.getElementById('country');
-    countrySelect.innerHTML = ''; // Limpa o select antes de preencher
+    countrySelect.innerHTML = '<option value="">Selecione um país</option>'; // Limpa o select antes de preencher
 
     // países em ordem alfabética
     countries.sort((a, b) => a.name.localeCompare(b.name));
@@ -106,8 +106,7 @@ async function fetchAndStoreCountries() {
                 code: country.cca2
             }));
         } catch (error) {
-            console.error('Restcountries falhou, tentando Countries API:', error);
-
+            console.error('Restcountries has failed! Trying Countries API:', error);
             try {
                 // Tenta buscar a lista de países da Countries API
                 const data = await fetchFromCountriesAPI();
@@ -116,7 +115,7 @@ async function fetchAndStoreCountries() {
                     code: country.countryCode
                 }));
             } catch (error) {
-                console.error('Countries API falhou, usando dados do IndexedDB:', error);
+                console.error('Countries API has failed! Trying to fetch data from IndexedDB:', error);
                 countryList = await getCountriesFromDB();
             }
         }
@@ -129,8 +128,8 @@ async function fetchAndStoreCountries() {
         // Preenche o campo de seleção de países
         populateCountrySelect(countryList);
     } catch (error) {
-        console.error('Erro ao buscar e armazenar países:', error);
+        console.error('Error fetching and storing countries:', error);
     }
 }
 
-export { fetchAndStoreCountries, getCountriesFromDB };
+export { fetchAndStoreCountries, getCountriesFromDB, populateCountrySelect };
