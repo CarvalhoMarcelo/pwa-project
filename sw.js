@@ -1,13 +1,14 @@
-const CACHE_NAME = 'olympics-cache-v3';
+const CACHE_NAME = 'olympics-cache-v1';
 const urlsToCache = [
     './',
-    './index.html',    
+    './index.html',  
+    './esportes.txt',
     './images/icon-192x192.png',
     './images/favicon.ico',
     './css/styles.css',
     './scripts/script.js',
     './scripts/fetchCountries.js',    
-    './manifest.json'
+    './manifest.json',
 ];
 
 self.addEventListener('install', event => {

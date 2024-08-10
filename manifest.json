@@ -1,12 +1,23 @@
 {
     "name": "Gerenciador de Olimpiadas",
     "short_name": "Olimpiadas",
-    "start_url": "/index.html",
+    "scope": "/pwa-project/",
+    "start_url": "/pwa-project/",
     "display": "standalone",
     "background_color": "#ffffff",
     "description": "Gerenciador de Olimpiadas com a tecnologia PWA",
     "theme_color": "#007BFF",
     "icons": [
+        {
+            "src": "/pwa-project/images/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/pwa-project/images/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
         {
             "src": "images/icon-192x192.png",
             "sizes": "192x192",
@@ -16,6 +27,6 @@
             "src": "images/icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
-        }
+        }        
     ]
 }
