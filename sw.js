@@ -1,13 +1,15 @@
-const CACHE_NAME = 'olympics-cache-v3';
+var GHPATH = '/pwa-project';
+const CACHE_NAME = 'olympics-cache-v1';
 const urlsToCache = [
-    './',
-    './index.html',    
-    './images/icon-192x192.png',
-    './images/favicon.ico',
-    './css/styles.css',
-    './scripts/script.js',
-    './scripts/fetchCountries.js',    
-    './manifest.json'
+    '${GHPATH}/',
+    '${GHPATH}/index.html',  
+    '${GHPATH}/esportes.txt',
+    '${GHPATH}/images/icon-192x192.png',
+    '${GHPATH}/images/favicon.ico',
+    '${GHPATH}/css/styles.css',
+    '${GHPATH}/scripts/script.js',
+    '${GHPATH}/scripts/fetchCountries.js',    
+    '${GHPATH}/manifest.json',
 ];
 
 self.addEventListener('install', event => {
