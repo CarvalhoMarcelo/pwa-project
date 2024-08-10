@@ -1,4 +1,4 @@
-## This is a graduate work using PWA, Cache API and IndexedDB for the DM122 discipline.
+## This is a graduate work using PWA, Cache API and, IndexedDB for the DM122 discipline.
 
 **Operational System:**
 
@@ -15,11 +15,17 @@
 
 **How to run:**
 
-1. Clone the repository into a single folder to not have path problems. Ex.: `'C:\dm122'` or `'/home/dm122'`
-
-2. How to run
-
-   - User Live Server, http-server or any other from your preference.
-   - Double click on index.html to see the page on your default browser.
+- Project use
+    - Clone the repository into a single folder to not have path problems. Ex.: `'C:\dm122'` or `'/home/dm122'`
+    - Open the folder into an editor, like VSCode.
+    - Use a local HTTP server to run it.
+        - For VSCode I used the Live Server plugin:
+            - https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
+    - In the editor, right-click on index.html and choose `Open with Live Server`.
+- Local/Remote use
+   - Access the below address to open the online application.
+        - https://carvalhomarcelo.github.io/pwa-project/
+   - To off-line use, install the application on your desktop or mobile as follow:
+        - https://www.cdc.gov/niosh/mining/content/hearingloss/installPWA.html
 
 ---
