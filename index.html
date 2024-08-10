@@ -15,9 +15,7 @@
             <div class="form-group">
                 <label for="year">Ano:</label>
                 <select id="year">                        
-                    <option value="1970">1970</option>
-                    <option value="1974">1974</option>
-                    <!-- Adicionar outros anos -->
+                    <!-- Os anos serão adicionados dinamicamente pelo JavaScript -->
                 </select>
             </div>
             <div class="form-group">
@@ -30,9 +28,7 @@
         <div class="form-group-1-line">
             <label for="sport">Modalidade:</label>
             <select id="sport">
-                <option value="Atletismo">Atletismo</option>
-                <option value="Natação">Natação</option>
-                <!-- Adicionar outras modalidades -->
+                <!-- Os esportes serão adicionados dinamicamente pelo JavaScript -->
             </select>
         </div>
         <div class="form-group-1-line">
@@ -50,7 +46,7 @@
             </div>
             <div class="form-group">
                 <label for="medalCount">Quantidade de Medalhas:</label>
-                <input type="number" id="medalCount" required>
+                <input type="number" id="medalCount" min="0" required>
             </div>
         </div>
         <button type="submit">Salvar</button>

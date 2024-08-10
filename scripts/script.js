@@ -1,6 +1,36 @@
 import { fetchAndStoreCountries, getCountriesFromDB, populateCountrySelect } from './fetchCountries.js';
 
 window.addEventListener('load', async () => {
+
+    // Carrega a lista de anos das olimpiadas 
+    const startYear = 1896;
+    const endYear = 2024;
+    const select = document.getElementById("year");
+
+    for (let year = startYear; year <= endYear; year++) {
+        const option = document.createElement("option");
+        option.value = year;
+        option.text = year;
+        select.appendChild(option);
+    }
+
+    // Carregar esportes de um arquivo de texto e preencher o combo de esportes
+    fetch('esportes.txt')
+        .then(response => response.text())
+        .then(data => {
+            const sportSelect = document.getElementById("sport");
+            const sports = data.split('\n');
+            
+            sports.forEach(sport => {
+                const option = document.createElement("option");
+                option.value = sport.trim();
+                option.text = sport.trim();
+                sportSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error loading sports:', error));    
+
+    // Carrega a lista de países    
     if (navigator.onLine) {
         await fetchAndStoreCountries();                   
     } else {
